@@ -1,0 +1,21 @@
+version: 1
+
+merge:
+  trigger:
+    labels:
+      - mergewhenready
+    branches:
+      - main
+
+  ignore:
+    labels:
+      - donotmerge
+
+  method: squash
+
+  options:
+    squash:
+      title: pull_request_title
+      body: summarize_commits
+
+  allow_merge_with_no_checks: false
