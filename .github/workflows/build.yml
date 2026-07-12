@@ -16,5 +16,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-    - name: Build
-      run: /usr/bin/true
+    - uses: actions/setup-go@v6
+      with:
+        go-version: stable
+    - name: Install policy-bot
+      run: go install github.com/palantir/policy-bot@latest
+    - name: Validate policy-bot
+      run: policy-bot validate -p policy.yml
