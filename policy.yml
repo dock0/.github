@@ -1,33 +1,3 @@
-policy:
-  approval:
-    - or:
-      - author is dependabot
-      - author is maintainer
-      - approved by maintainer
-  disapproval:
-    requires:
-      permissions:
-        - maintain
-approval_defaults:
-  options:
-    invalidate_on_push: true
-approval_rules:
-  - name: author is dependabot
-    if:
-      has_author_in:
-        users:
-          - dependabot[bot]
-    requires:
-      count: 0
-  - name: author is maintainer
-    if:
-      has_author_in:
-        permissions:
-          - maintain
-    requires:
-      count: 0
-  - name: approved by maintainer
-    requires:
-      count: 1
-      permissions:
-        - maintain
+remote: akerl/.github
+path: policy.yml
+ref: main
