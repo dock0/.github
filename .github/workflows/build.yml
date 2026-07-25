@@ -19,3 +19,9 @@ jobs:
       run: go install github.com/palantir/policy-bot@latest
     - name: Validate policy-bot
       run: policy-bot validate -p policy.yml
+    - name: Post to hook-exporter
+      uses: akerl/.github/actions/hook-exporter@main
+      with:
+        token: ${{ secrets.EXPORTER_TOKEN }}
+        status: ${{ job.status }}
+      if: always() && github.ref == 'refs/heads/main'
